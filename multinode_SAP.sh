@@ -155,7 +155,7 @@ if [ $netDisable -ge 1 ]; then
 	then
 		dev2=venet0
 	else
-		echo 'Cannot use this script at this time, please message us in discord so we can assist why'
+		echo 'Cannot use this script at this time'
 		exit 1
 	fi
 else
@@ -201,7 +201,7 @@ echo "ip addr add 192.168.1.${NUM}/32 dev $dev2:${NUM}" >> ~/start_multinode.sh
 echo "runuser -l sap -c 'methuselahd -daemon -pid=$BASE/multinode/SAP_${NUM}/methuselah.pid -conf=$BASE/multinode/SAP_${NUM}/methuselah.conf -datadir=$BASE/multinode/SAP_${NUM}'" >> ~/start_multinode.sh
 
 echo "ip addr del 192.168.1.${NUM}/32 dev $dev2:${NUM}" >> ~/stop_multinode.sh
-echo "methuselah-cli -conf=$BASE/multinode/SAP_${NUM}/methuselah.conf -datadir=$BASE/multinode/SAP_${NUM}' stop" >> ~/stop_multinode.sh
+echo "methuselah-cli -conf=$BASE/multinode/SAP_${NUM}/methuselah.conf -datadir=$BASE/multinode/SAP_${NUM} stop" >> ~/stop_multinode.sh
 
 echo "====================================================${NUM}========================================================================" >> ~/mn_status.sh
 echo "methuselah-cli -conf=$BASE/multinode/SAP_${NUM}/methuselah.conf -datadir=$BASE/multinode/SAP_${NUM} masternode debug " >> ~/mn_status.sh
