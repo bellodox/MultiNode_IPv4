@@ -216,9 +216,9 @@ chmod +x ~/start_multinode.sh
 chmod +x ~/stop_multinode.sh
 chmod +x ~/mn_status.sh
 chmod +x ~/mn_getinfo.sh
-mv start_multinode.sh /usr/local/bin
-mv stop_multinode.sh /usr/local/bin
-mv mn_* /usr/local/bin
+#mv start_multinode.sh /usr/local/bin
+#mv stop_multinode.sh /usr/local/bin
+#mv mn_* /usr/local/bin
 chown -R sap:sap /home/sap/multinode
 chmod -R g=u /home/sap/multinode
 
