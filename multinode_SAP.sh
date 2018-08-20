@@ -222,7 +222,7 @@ mv mn_* /usr/local/bin
 chown -R sap:sap /home/sap/multinode
 chmod -R g=u /home/sap/multinode
 
-echo 'run start_multinode to start the multinode'
-echo 'run stop_multinode to stop it'
+echo 'run start_multinode.sh to start the multinode'
+echo 'run stop_multinode.sh to stop it'
 echo 'run mn_getinfo.sh to see the status of all of the nodes'
 echo 'run mn_status.sh for masternode debug of all the nodes'
