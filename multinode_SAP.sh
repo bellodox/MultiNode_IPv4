@@ -203,10 +203,10 @@ echo "runuser -l sap -c 'methuselahd -daemon -pid=$BASE/multinode/SAP_${NUM}/met
 echo 'ip addr del 192.168.1.'"${NUM}"'/32 dev '"$dev2"':'"${NUM}" >> ~/stop_multinode.sh
 echo "methuselah-cli -conf=$BASE/multinode/SAP_${NUM}/methuselah.conf -datadir=$BASE/multinode/SAP_${NUM} stop" >> ./stop_multinode.sh
 
-echo "====================================================${NUM}========================================================================" >> ./mn_status.sh
+echo "echo '====================================================${NUM}========================================================================'" >> ./mn_status.sh
 echo "methuselah-cli -conf=$BASE/multinode/SAP_${NUM}/methuselah.conf -datadir=$BASE/multinode/SAP_${NUM} masternode debug " >> ./mn_status.sh
 
-echo "====================================================${NUM}========================================================================" >> ./getinfo.sh
+echo "echo '====================================================${NUM}========================================================================'" >> ./getinfo.sh
 echo "methuselah-cli -conf=$BASE/multinode/SAP_${NUM}/methuselah.conf -datadir=$BASE/multinode/SAP_${NUM} getinfo" >> ./mn_getinfo.sh
 
 fi
