@@ -75,7 +75,7 @@ sudo apt-get -y dist-upgrade
 sudo apt-get -y autoremove
 sudo apt-get -y install wget nano htop jq
 sudo apt-get -y install libzmq3-dev
-sudo apt-get -y install libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev
+sudo apt-get -y install libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev lshw
 sudo apt-get -y install libevent-dev
 sudo apt-get instal unzip
 sudo apt -y install software-properties-common
@@ -87,7 +87,7 @@ sudo apt-get -y install libminiupnpc-dev
 sudo apt-get -y install fail2ban
 sudo service fail2ban restart
 sudo apt-get install libdb5.3++-dev libdb++-dev libdb5.3-dev libdb-dev && ldconfig
-sudo apt-get install -y unzip libzmq3-dev build-essential libssl-dev libboost-all-dev libqrencode-dev libminiupnpc-dev libboost-system1.58.0 libboost1.58-all-dev libdb4.8++ libdb4.8 libdb4.8-dev libdb4.8++-dev libevent-pthreads-2.0-5 lshw
+sudo apt-get install -y unzip libzmq3-dev build-essential libssl-dev libboost-all-dev libqrencode-dev libminiupnpc-dev libboost-system1.58.0 libboost1.58-all-dev libdb4.8++ libdb4.8 libdb4.8-dev libdb4.8++-dev libevent-pthreads-2.0-5
 fi 
 
 #Create 2GB swap file
@@ -196,26 +196,26 @@ addnode=node9.methuselahcoin.io:7555" |sudo tee -a "$BASE"/multinode/SAP_"${NUM}
 echo 'bind=192.168.1.'"${NUM}"':'"$PORT" >> "$BASE"/multinode/SAP_"${NUM}"/methuselah.conf
 echo 'rpcport=500'"${NUM}" >> "$BASE"/multinode/SAP_"${NUM}"/methuselah.conf
 
-echo 'ip addr del 192.168.1.'"${NUM}"'/32 dev '"$dev2"':'"${NUM}" >> ./start_multinode.sh
-echo 'ip addr add 192.168.1.'"${NUM}"'/32 dev '"$dev2"':'"${NUM}" >> ./start_multinode.sh
-echo "runuser -l sap -c 'methuselahd -daemon -pid=$BASE/multinode/SAP_${NUM}/methuselah.pid -conf=$BASE/multinode/SAP_${NUM}/methuselah.conf -datadir=$BASE/multinode/SAP_${NUM}'" >> ./start_multinode.sh
+echo 'ip addr del 192.168.1.'"${NUM}"'/32 dev '"$dev2"':'"${NUM}" >> start_multinode.sh
+echo 'ip addr add 192.168.1.'"${NUM}"'/32 dev '"$dev2"':'"${NUM}" >> start_multinode.sh
+echo "runuser -l sap -c 'methuselahd -daemon -pid=$BASE/multinode/SAP_${NUM}/methuselah.pid -conf=$BASE/multinode/SAP_${NUM}/methuselah.conf -datadir=$BASE/multinode/SAP_${NUM}'" >> start_multinode.sh
 
-echo 'ip addr del 192.168.1.'"${NUM}"'/32 dev '"$dev2"':'"${NUM}" >> ~/stop_multinode.sh
-echo "methuselah-cli -conf=$BASE/multinode/SAP_${NUM}/methuselah.conf -datadir=$BASE/multinode/SAP_${NUM} stop" >> ./stop_multinode.sh
+echo 'ip addr del 192.168.1.'"${NUM}"'/32 dev '"$dev2"':'"${NUM}" >> stop_multinode.sh
+echo "methuselah-cli -conf=$BASE/multinode/SAP_${NUM}/methuselah.conf -datadir=$BASE/multinode/SAP_${NUM} stop" >> stop_multinode.sh
 
-echo "echo '====================================================${NUM}========================================================================'" >> ./mn_status.sh
-echo "methuselah-cli -conf=$BASE/multinode/SAP_${NUM}/methuselah.conf -datadir=$BASE/multinode/SAP_${NUM} masternode debug " >> ./mn_status.sh
+echo "echo '====================================================${NUM}========================================================================'" >> mn_status.sh
+echo "methuselah-cli -conf=$BASE/multinode/SAP_${NUM}/methuselah.conf -datadir=$BASE/multinode/SAP_${NUM} masternode debug " >> mn_status.sh
 
-echo "echo '====================================================${NUM}========================================================================'" >> ./getinfo.sh
-echo "methuselah-cli -conf=$BASE/multinode/SAP_${NUM}/methuselah.conf -datadir=$BASE/multinode/SAP_${NUM} getinfo" >> ./mn_getinfo.sh
+echo "echo '====================================================${NUM}========================================================================'" >> getinfo.sh
+echo "methuselah-cli -conf=$BASE/multinode/SAP_${NUM}/methuselah.conf -datadir=$BASE/multinode/SAP_${NUM} getinfo" >> mn_getinfo.sh
 
 fi
 done
 
-chmod +x ./start_multinode.sh
-chmod +x ./stop_multinode.sh
-chmod +x ./mn_status.sh
-chmod +x ./mn_getinfo.sh
+chmod +x start_multinode.sh
+chmod +x stop_multinode.sh
+chmod +x mn_status.sh
+chmod +x mn_getinfo.sh
 mv start_multinode.sh /usr/local/bin
 mv stop_multinode.sh /usr/local/bin
 mv mn_* /usr/local/bin
