@@ -196,29 +196,29 @@ addnode=node9.methuselahcoin.io:7555" |sudo tee -a "$BASE"/multinode/SAP_"${NUM}
 echo 'bind=192.168.1.'"${NUM}"':'"$PORT" >> "$BASE"/multinode/SAP_"${NUM}"/methuselah.conf
 echo 'rpcport=500'"${NUM}" >> "$BASE"/multinode/SAP_"${NUM}"/methuselah.conf
 
-echo "ip addr del 192.168.1.${NUM}/32 dev $dev2:${NUM}" >> ~/start_multinode.sh
-echo "ip addr add 192.168.1.${NUM}/32 dev $dev2:${NUM}" >> ~/start_multinode.sh
-echo "runuser -l sap -c 'methuselahd -daemon -pid=$BASE/multinode/SAP_${NUM}/methuselah.pid -conf=$BASE/multinode/SAP_${NUM}/methuselah.conf -datadir=$BASE/multinode/SAP_${NUM}'" >> ~/start_multinode.sh
+echo 'ip addr del 192.168.1.'"${NUM}"'/32 dev '"$dev2"':'"${NUM}" >> ./start_multinode.sh
+echo 'ip addr add 192.168.1.'"${NUM}"'/32 dev '"$dev2"':'"${NUM}" >> ./start_multinode.sh
+echo "runuser -l sap -c 'methuselahd -daemon -pid=$BASE/multinode/SAP_${NUM}/methuselah.pid -conf=$BASE/multinode/SAP_${NUM}/methuselah.conf -datadir=$BASE/multinode/SAP_${NUM}'" >> ./start_multinode.sh
 
-echo "ip addr del 192.168.1.${NUM}/32 dev $dev2:${NUM}" >> ~/stop_multinode.sh
-echo "methuselah-cli -conf=$BASE/multinode/SAP_${NUM}/methuselah.conf -datadir=$BASE/multinode/SAP_${NUM} stop" >> ~/stop_multinode.sh
+echo 'ip addr del 192.168.1.'"${NUM}"'/32 dev '"$dev2"':'"${NUM}" >> ~/stop_multinode.sh
+echo "methuselah-cli -conf=$BASE/multinode/SAP_${NUM}/methuselah.conf -datadir=$BASE/multinode/SAP_${NUM} stop" >> ./stop_multinode.sh
 
-echo "====================================================${NUM}========================================================================" >> ~/mn_status.sh
-echo "methuselah-cli -conf=$BASE/multinode/SAP_${NUM}/methuselah.conf -datadir=$BASE/multinode/SAP_${NUM} masternode debug " >> ~/mn_status.sh
+echo "====================================================${NUM}========================================================================" >> ./mn_status.sh
+echo "methuselah-cli -conf=$BASE/multinode/SAP_${NUM}/methuselah.conf -datadir=$BASE/multinode/SAP_${NUM} masternode debug " >> ./mn_status.sh
 
-echo "====================================================${NUM}========================================================================" >> ~/getinfo.sh
-echo "methuselah-cli -conf=$BASE/multinode/SAP_${NUM}/methuselah.conf -datadir=$BASE/multinode/SAP_${NUM} getinfo" >> ~/mn_getinfo.sh
+echo "====================================================${NUM}========================================================================" >> ./getinfo.sh
+echo "methuselah-cli -conf=$BASE/multinode/SAP_${NUM}/methuselah.conf -datadir=$BASE/multinode/SAP_${NUM} getinfo" >> ./mn_getinfo.sh
 
 fi
 done
 
-chmod +x ~/start_multinode.sh
-chmod +x ~/stop_multinode.sh
-chmod +x ~/mn_status.sh
-chmod +x ~/mn_getinfo.sh
-#mv start_multinode.sh /usr/local/bin
-#mv stop_multinode.sh /usr/local/bin
-#mv mn_* /usr/local/bin
+chmod +x ./start_multinode.sh
+chmod +x ./stop_multinode.sh
+chmod +x ./mn_status.sh
+chmod +x ./mn_getinfo.sh
+mv start_multinode.sh /usr/local/bin
+mv stop_multinode.sh /usr/local/bin
+mv mn_* /usr/local/bin
 chown -R sap:sap /home/sap/multinode
 chmod -R g=u /home/sap/multinode
 
