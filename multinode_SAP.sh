@@ -226,4 +226,4 @@ echo 'run start_multinode.sh to start the multinode'
 echo 'run stop_multinode.sh to stop it'
 echo 'run mn_getinfo.sh to see the status of all of the nodes'
 echo 'run mn_status.sh for masternode debug of all the nodes'
-echo 'in masternode.conf file use the external IP address as the address ex. MN1 '"$IPADDRESS'":7555 privekey tx_id tx_index'
+echo "in masternode.conf file use the external IP address as the address ex. MN1 $IPADDRESS:7555 privekey tx_id tx_index"
