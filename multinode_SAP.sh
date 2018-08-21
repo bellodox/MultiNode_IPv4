@@ -5,6 +5,8 @@ PORT=7555
 # Execute options
 ARGS=$(getopt -o "hp:n:c:r:wsudx" -l "help,count:,net" -n "multinode_SAP.sh" -- "$@");
 
+net=4
+count=1
 eval set -- "$ARGS";
 
 while true; do
