@@ -65,6 +65,7 @@ fi
     fi
 	
 #Check Deps
+sudo apt-get install lshw
 if [ -d "/var/lib/fail2ban/" ]; 
 then
     echo -e "Dependencies already installed..."
