@@ -150,10 +150,10 @@ else
 fi
 
 netDisable=$(lshw -c network | grep -c 'network DISABLED')
-vznet=$(lsmod | grep -c vzdev)
+venet0=$(cat /etc/network/interfaces | grep -c venet)
 
 if [ $netDisable -ge 1 ]; then
-	if [ $vznet -ge 1 ]; 
+	if [ $venet0 -ge 1 ]; 
 	then
 		dev2=venet0
 	else
